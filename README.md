@@ -62,6 +62,9 @@ What I reach for daily — surfaced in-context above; here's the spine:
 ![Linux internals](https://img.shields.io/badge/Linux_internals-FCC624?style=flat-square&logo=linux&logoColor=black)
 ![Reverse engineering](https://img.shields.io/badge/Reverse_engineering-E83E8C?style=flat-square&logo=ghidra&logoColor=white)
 
+<p align="center"><sub>Most-used languages — measured from real code across my repos, <em>including private work</em>:</sub></p>
+<p align="center"><img src="assets/metrics.svg" alt="Most-used languages, measured from real code including private repositories" width="540" /></p>
+
 ---
 
 ### 🤝 Let's build something
