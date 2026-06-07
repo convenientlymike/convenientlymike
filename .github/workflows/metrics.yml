@@ -31,9 +31,9 @@ jobs:
           user: convenientlymike
           filename: assets/metrics.svg
           template: classic
-          base: header, activity, community, repositories, metadata
+          base: ""
           config_timezone: America/Denver        # MST / Mountain Time
-          config_order: base.header, base.activity, languages, base.community
+          config_order: languages
           # Show contribution effort including private work:
           repositories_affiliations: owner, collaborator, organization_member
           plugin_languages: yes
@@ -41,6 +41,6 @@ jobs:
           plugin_languages_limit: 8
           plugin_languages_sections: most-used
           plugin_languages_colors: github
-          plugin_lines: yes
+          # Languages-only card — no zero-laden base/community sections on a new account.
           output_action: commit
           committer_message: "chore: refresh profile metrics"
