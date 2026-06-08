@@ -71,7 +71,7 @@ What I reach for daily — surfaced in-context above; here's the spine:
 ![Reverse engineering](https://img.shields.io/badge/Reverse_engineering-E83E8C?style=flat-square&logo=ghidra&logoColor=white)
 
 <p align="center"><sub>Languages measured from real code across my repos — <em>including private work</em> — with a live contribution calendar:</sub></p>
-<p align="center"><img src="assets/metrics.svg" alt="Most-used languages and contribution calendar, measured from real code including private repositories" width="540" /></p>
+<p align="center"><img src="assets/metrics.svg" alt="Most-used languages and contribution calendar, measured from real code including private repositories" width="100%" /></p>
 
 <img src="assets/divider.svg" width="100%" height="5" alt="" />
 
