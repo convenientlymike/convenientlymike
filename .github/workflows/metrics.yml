@@ -56,7 +56,10 @@ jobs:
           plugin_languages_indepth: yes
           plugin_languages_sections: most-used
           plugin_languages_details: percentage, bytes-size
-          plugin_languages_analysis_timeout: 30
+          # widen the de-vendored scan to surface more languages (it only reached
+          # 16 commits in 30s — Rust/Swift/Go/C may live in repos it didn't reach)
+          plugin_languages_analysis_timeout: 60
+          plugin_languages_analysis_timeout_repositories: 60
           plugin_languages_categories: programming, markup
           plugin_languages_limit: 0
           plugin_languages_threshold: 0%
