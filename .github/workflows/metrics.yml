@@ -48,10 +48,11 @@ jobs:
 
           # Languages — lifetime breadth + recent trajectory (aggregate %/bytes; no names)
           plugin_languages: yes
-          plugin_languages_sections: most-used, recently-used
+          # NOTE: 'recently-used' is intentionally omitted — its recent-analyzer
+          # requires plugin_languages_indepth (which clones private repos), and
+          # crashes the run without it. 'most-used' works on aggregate byte data.
+          plugin_languages_sections: most-used
           plugin_languages_details: percentage, bytes-size
-          plugin_languages_recent_days: 30
-          plugin_languages_recent_load: 500
           plugin_languages_categories: programming, markup
           plugin_languages_limit: 8
           plugin_languages_threshold: 1%
