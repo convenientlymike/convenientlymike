@@ -86,6 +86,10 @@ jobs:
             .field{color:#C9D1D9;}
             .field svg{fill:#22D3EE;}
             svg.bar rect[fill="white"]{fill:#161B22;}
+            /* make the language bar POP: taller + saturated/brighter + soft violet glow */
+            svg.bar{height:14px;filter:saturate(1.55) brightness(1.32) drop-shadow(0 0 3px rgba(139,92,246,.5));}
+            svg.bar rect{height:14px;}
+            .field.language svg path{filter:saturate(1.5) brightness(1.32);}
             [fill="#ebedf0"]{fill:#161B22;}
             [fill="#9be9a8"]{fill:#312E81;}
             [fill="#40c463"]{fill:#6366F1;}
