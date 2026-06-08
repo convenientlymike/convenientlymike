@@ -37,17 +37,17 @@ svg.bar rect[fill="white"]{fill:#161B22;}
                         <rect x="0" y="0" width="460" height="8" fill="white" rx="5"/>
                     </mask>
                     <rect mask="url(#languages-bar)" x="0" y="0" width="0" height="8" fill="#d1d5da"/>
-                    <rect mask="url(#languages-bar)" x="0" y="0" width="388.45302839481303" height="8" fill="#3178c6"/>
-                    <rect mask="url(#languages-bar)" x="388.45302839481303" y="0" width="26.289685265964106" height="8" fill="#f1e05a"/>
-                    <rect mask="url(#languages-bar)" x="414.7427136607771" y="0" width="15.243462029305226" height="8" fill="#3572A5"/>
-                    <rect mask="url(#languages-bar)" x="429.98617569008235" y="0" width="13.561568133652504" height="8" fill="#dea584"/>
-                    <rect mask="url(#languages-bar)" x="443.54774382373483" y="0" width="9.974248307103455" height="8" fill="#F05138"/>
-                    <rect mask="url(#languages-bar)" x="453.52199213083827" y="0" width="3.3736489636236966" height="8" fill="#89e051"/>
-                    <rect mask="url(#languages-bar)" x="456.89564109446195" y="0" width="1.8266457166195245" height="8" fill="#663399"/>
-                    <rect mask="url(#languages-bar)" x="458.7222868110815" y="0" width="0.6993245025767909" height="8" fill="#e34c26"/>
-                    <rect mask="url(#languages-bar)" x="459.4216113136583" y="0" width="0.2883028349723399" height="8" fill="#A97BFF"/>
-                    <rect mask="url(#languages-bar)" x="459.7099141486306" y="0" width="0.16918642322401797" height="8" fill="#427819"/>
-                    <rect mask="url(#languages-bar)" x="459.87910057185456" y="0" width="0.12089942814534889" height="8" fill="#384d54"/>
+                    <rect mask="url(#languages-bar)" x="0" y="0" width="388.30280103942414" height="8" fill="#3178c6"/>
+                    <rect mask="url(#languages-bar)" x="388.30280103942414" y="0" width="26.26545700836787" height="8" fill="#f1e05a"/>
+                    <rect mask="url(#languages-bar)" x="414.568258047792" y="0" width="15.445578021616736" height="8" fill="#3572A5"/>
+                    <rect mask="url(#languages-bar)" x="430.0138360694088" y="0" width="13.549069955647443" height="8" fill="#dea584"/>
+                    <rect mask="url(#languages-bar)" x="443.56290602505624" y="0" width="9.96505615988417" height="8" fill="#F05138"/>
+                    <rect mask="url(#languages-bar)" x="453.5279621849404" y="0" width="3.3705398493340795" height="8" fill="#89e051"/>
+                    <rect mask="url(#languages-bar)" x="456.8985020342745" y="0" width="1.8249623019071917" height="8" fill="#663399"/>
+                    <rect mask="url(#languages-bar)" x="458.7234643361817" y="0" width="0.698680013530217" height="8" fill="#e34c26"/>
+                    <rect mask="url(#languages-bar)" x="459.4221443497119" y="0" width="0.2880371385487894" height="8" fill="#A97BFF"/>
+                    <rect mask="url(#languages-bar)" x="459.7101814882607" y="0" width="0.169030503052202" height="8" fill="#427819"/>
+                    <rect mask="url(#languages-bar)" x="459.87921199131284" y="0" width="0.12078800868715799" height="8" fill="#384d54"/>
                 </svg>
                 <div class="row fill-width">
                     <section>
@@ -60,7 +60,7 @@ svg.bar rect[fill="white"]{fill:#161B22;}
                             </div>
                             <small>
                                 <div>21.3 MB</div>
-                                <div>84.45%</div>
+                                <div>84.41%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -71,8 +71,8 @@ svg.bar rect[fill="white"]{fill:#161B22;}
                                 Python
                             </div>
                             <small>
-                                <div>837 kB</div>
-                                <div>3.31%</div>
+                                <div>849 kB</div>
+                                <div>3.36%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -134,7 +134,7 @@ svg.bar rect[fill="white"]{fill:#161B22;}
                             </div>
                             <small>
                                 <div>1.44 MB</div>
-                                <div>5.72%</div>
+                                <div>5.71%</div>
                             </small>
                         </div>
                         <div class="field language details">
