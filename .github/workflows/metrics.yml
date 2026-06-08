@@ -24,6 +24,9 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout (so we can post-process + commit the SVG ourselves)
+        uses: actions/checkout@v4
+
       - name: Generate metrics
         uses: lowlighter/metrics@latest
         with:
@@ -95,5 +98,20 @@ jobs:
             [fill="#40c463"]{fill:#6366F1;}
             [fill="#30a14e"]{fill:#8B5CF6;}
             [fill="#216e39"]{fill:#22D3EE;}
-          output_action: commit
-          committer_message: "chore: refresh profile metrics"
+          # We commit the SVG ourselves (below) so we can inject a viewBox first.
+          output_action: none
+
+      - name: Make SVG responsive (inject viewBox — Safari/iOS scales it correctly)
+        run: python3 .github/scripts/make_svg_responsive.py assets/metrics.svg
+
+      - name: Commit & push refreshed metrics
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/metrics.svg
+          if git diff --cached --quiet; then
+            echo "no metrics change"
+          else
+            git commit -m "chore: refresh profile metrics"
+            git push
+          fi
