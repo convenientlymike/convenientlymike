@@ -33,17 +33,78 @@ jobs:
           template: classic
           base: ""
           config_timezone: America/Denver        # MST / Mountain Time
-          config_order: languages, isocalendar
-          # Show contribution effort including private work:
+          config_order: languages, habits, isocalendar, achievements
+          config_display: regular
+          config_animations: yes
+          # ANONYMITY: every plugin below is AGGREGATE-ONLY — it counts private work
+          # (bytes, calendar heat, behavioral patterns) but never renders a repository
+          # NAME. base: "" already drops the repo/activity sections. Do NOT add per-repo
+          # plugins (lines/activity/notable/stars/code/repositories/traffic) or
+          # plugin_languages_indepth (clones private repos onto the runner). And never
+          # put a repo name / banned token in this PUBLIC file (no repositories_skipped
+          # denylist). Verify each render locally: grep the SVG for any leak before push.
           repositories_affiliations: owner, collaborator, organization_member
+          repositories_forks: false
+
+          # Languages — lifetime breadth + recent trajectory (aggregate %/bytes; no names)
           plugin_languages: yes
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_details: percentage, bytes-size
+          plugin_languages_recent_days: 30
+          plugin_languages_recent_load: 500
+          plugin_languages_categories: programming, markup
           plugin_languages_limit: 8
-          plugin_languages_sections: most-used
+          plugin_languages_threshold: 1%
+          plugin_languages_other: yes
+          plugin_languages_ignored: html, css, scss, dockerfile, makefile, tex, lockfile
           plugin_languages_colors: github
-          # Isometric contribution calendar — a daily-changing "it's alive" signal.
-          # The metrics bot itself commits here twice a day, so the calendar always
-          # has fresh public activity even while most real work lives in private repos.
+
+          # Habits — active hours / weekday / indent style / chars-per-line + charts
+          plugin_habits: yes
+          plugin_habits_from: 1000
+          plugin_habits_days: 30
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          plugin_habits_charts_type: graph
+          plugin_habits_trim: yes
+
+          # Isometric contribution calendar — the showpiece 3D heatmap
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
+
+          # Achievements — account-level milestone badges (no repo names)
+          plugin_achievements: yes
+          plugin_achievements_display: compact
+          plugin_achievements_threshold: B
+          plugin_achievements_secrets: yes
+
+          # ---- Dark violet→cyan restyle (the visual "amazing") ----
+          extras_css: |
+            .items-wrapper{position:relative;background:
+              radial-gradient(120% 120% at 0% 0%,rgba(139,92,246,.18),transparent 55%),
+              radial-gradient(120% 120% at 100% 100%,rgba(34,211,238,.16),transparent 55%),
+              linear-gradient(150deg,#0B0E14 0%,#0D1117 60%,#11141C 100%);
+              border:1px solid #21262D;border-radius:12px;padding:14px 16px;}
+            body{margin:0;}
+            svg{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;color:#E6EDF3;}
+            h2,h3{font-weight:700;letter-spacing:.2px;
+              background:linear-gradient(90deg,#8B5CF6 0%,#6366F1 45%,#22D3EE 100%);
+              -webkit-background-clip:text;background-clip:text;color:transparent;
+              animation:brandShift 8s ease-in-out infinite;}
+            h2 svg,h3 svg{fill:#8B5CF6;}
+            .field{color:#C9D1D9;}
+            .field svg{fill:#22D3EE;}
+            svg.bar rect[fill="white"]{fill:#161B22;}
+            svg.bar{filter:drop-shadow(0 0 4px rgba(139,92,246,.35));}
+            :root{
+              --color-calendar-graph-day-bg:#161B22;
+              --color-calendar-graph-day-border:rgba(139,92,246,.10);
+              --color-calendar-graph-day-L1-bg:#312E81;
+              --color-calendar-graph-day-L2-bg:#6366F1;
+              --color-calendar-graph-day-L3-bg:#8B5CF6;
+              --color-calendar-graph-day-L4-bg:#22D3EE;
+              --color-calendar-graph-day-L4-border:rgba(34,211,238,.15);}
+            .calendar .day{outline-color:rgba(139,92,246,.12);}
+            @keyframes brandShift{0%,100%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(16deg)}}
           output_action: commit
           committer_message: "chore: refresh profile metrics"
