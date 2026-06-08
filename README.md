@@ -46,7 +46,7 @@ Much of that product work lives in **real-estate tech** — an investment firm's
 | 🏠 **Virtual House Tours** *(in development)* | Full property-tour SaaS — iOS app, web + dashboard, Tauri desktop, signed-URL delivery, Stripe billing, background workers. | `TypeScript` · `iOS` · `Fastify` · `Postgres` · `Redis` · `S3` |
 | 🏘️ **Real-estate wholesaling platform** *(private)* | A wholesaling software stack — Next.js web, a Go service for seller outreach/telephony, a FastAPI AI lead layer, Temporal deal workflows, ClickHouse analytics, Kafka streaming. | `Next.js` · `Go` · `FastAPI` · `Temporal` · `ClickHouse` · `Kafka` |
 | 🎛️ **`dma-manager` — hardware control plane** | Premium real-time control plane for hardware controllers — 30 Hz telemetry, a clean hardware-abstraction layer (sim → probe → PCIe → serial → remote), hardened API. | `TypeScript` · `React` · `FastAPI` · `real-time HAL` |
-| 🔬 **Low-level systems & RE** | From-scratch systems stack: custom GKI 5.15 Linux kernel, Android platform engineering, dynamic instrumentation, native reverse engineering, GPU translation. | `C` · `Kotlin` · `Frida` · `Vulkan` · `Metal` · `AOSP` |
+| 🔬 **Low-level systems & RE** | From-scratch systems stack: custom GKI 5.15 Linux kernel, Android platform engineering, dynamic instrumentation, native reverse engineering, GPU translation. | `C` · `Kotlin` · `Instrumentation` · `Vulkan` · `Metal` · `AOSP` |
 | 🧪 **Browser Harness** | Autonomous CDP-driven debugging + observability toolkit — drives a real browser, captures runtime/network failures, turns "looks fine" into "proven." | `Python` · `Node` · `Playwright` · `CDP` |
 
 <img src="assets/divider.svg" width="100%" height="5" alt="" />

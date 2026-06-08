@@ -33,79 +33,61 @@ jobs:
           template: classic
           base: ""
           config_timezone: America/Denver        # MST / Mountain Time
-          config_order: languages, habits, isocalendar, achievements
+          config_order: languages, isocalendar
           config_display: regular
-          config_animations: yes
-          # ANONYMITY: every plugin below is AGGREGATE-ONLY — it counts private work
-          # (bytes, calendar heat, behavioral patterns) but never renders a repository
-          # NAME. base: "" already drops the repo/activity sections. Do NOT add per-repo
-          # plugins (lines/activity/notable/stars/code/repositories/traffic) or
-          # plugin_languages_indepth (clones private repos onto the runner). And never
-          # put a repo name / banned token in this PUBLIC file (no repositories_skipped
-          # denylist). Verify each render locally: grep the SVG for any leak before push.
+          # ANONYMITY: both plugins are AGGREGATE-ONLY — they count private work
+          # (language bytes, calendar heat) but never render a repository NAME.
+          # base: "" already drops the repo/activity sections. Do NOT add per-repo
+          # plugins (lines/activity/notable/stars/code/repositories) or _indepth, and
+          # never put a repo name / banned token in this PUBLIC file. Verify each
+          # render LOCALLY (render the SVG + grep for leaks) before pushing.
+          # REMOVED habits + achievements: both error on this account's data (habits
+          # "Cannot destructure author of undefined"; achievements GraphQL error) and
+          # only render red "Unexpected error" blocks. languages + isocalendar are clean.
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: false
 
-          # Languages — lifetime breadth + recent trajectory (aggregate %/bytes; no names)
+          # Languages — granular aggregate breakdown (% + byte sizes; no repo names)
+          # indepth: per-commit attribution de-vendors the byte counts (so TypeScript
+          # stops drowning out Rust/Python/Swift) AND yields the real total bytes/files.
+          # Safe here: phantom is not on GitHub, so the token can't clone it; output is
+          # name-free. limit:0 + threshold:0 = show EVERY language.
           plugin_languages: yes
-          # NOTE: 'recently-used' is intentionally omitted — its recent-analyzer
-          # requires plugin_languages_indepth (which clones private repos), and
-          # crashes the run without it. 'most-used' works on aggregate byte data.
+          plugin_languages_indepth: yes
           plugin_languages_sections: most-used
           plugin_languages_details: percentage, bytes-size
+          plugin_languages_analysis_timeout: 30
           plugin_languages_categories: programming, markup
-          plugin_languages_limit: 8
-          plugin_languages_threshold: 1%
-          plugin_languages_other: yes
-          plugin_languages_ignored: html, css, scss, dockerfile, makefile, tex, lockfile
+          plugin_languages_limit: 0
+          plugin_languages_threshold: 0%
           plugin_languages_colors: github
 
-          # Habits — active hours / weekday / indent style / chars-per-line + charts
-          plugin_habits: yes
-          plugin_habits_from: 1000
-          plugin_habits_days: 30
-          plugin_habits_facts: yes
-          plugin_habits_charts: yes
-          plugin_habits_charts_type: graph
-          plugin_habits_trim: yes
-
-          # Isometric contribution calendar — the showpiece 3D heatmap
+          # Isometric 3D contribution calendar (recolored to the brand ramp via CSS below)
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
 
-          # Achievements — account-level milestone badges (no repo names)
-          plugin_achievements: yes
-          plugin_achievements_display: compact
-          plugin_achievements_threshold: B
-          plugin_achievements_secrets: yes
-
-          # ---- Dark violet→cyan restyle (the visual "amazing") ----
+          # ---- Dark violet→cyan restyle ----
+          # Only renderer-safe CSS: solid colors + direct fill-overrides. The earlier
+          # gradient-text headers, :root calendar vars, drop-shadow and CSS animation
+          # did NOT render in the committed SVG, so they're dropped. The calendar uses
+          # inline fill="#9be9a8" etc. (GitHub greens), so we override those fills.
           extras_css: |
             .items-wrapper{position:relative;background:
-              radial-gradient(120% 120% at 0% 0%,rgba(139,92,246,.18),transparent 55%),
-              radial-gradient(120% 120% at 100% 100%,rgba(34,211,238,.16),transparent 55%),
-              linear-gradient(150deg,#0B0E14 0%,#0D1117 60%,#11141C 100%);
-              border:1px solid #21262D;border-radius:12px;padding:14px 16px;}
+              radial-gradient(120% 120% at 0% 0%,rgba(139,92,246,.16),transparent 55%),
+              radial-gradient(120% 120% at 100% 100%,rgba(34,211,238,.14),transparent 55%),
+              #0D1117;
+              border:1px solid #21262D;border-radius:12px;padding:14px 18px;}
             body{margin:0;}
-            svg{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;color:#E6EDF3;}
-            h2,h3{font-weight:700;letter-spacing:.2px;
-              background:linear-gradient(90deg,#8B5CF6 0%,#6366F1 45%,#22D3EE 100%);
-              -webkit-background-clip:text;background-clip:text;color:transparent;
-              animation:brandShift 8s ease-in-out infinite;}
+            svg{color:#E6EDF3;}
+            h2,h3{color:#A78BFA;font-weight:700;}
             h2 svg,h3 svg{fill:#8B5CF6;}
             .field{color:#C9D1D9;}
             .field svg{fill:#22D3EE;}
             svg.bar rect[fill="white"]{fill:#161B22;}
-            svg.bar{filter:drop-shadow(0 0 4px rgba(139,92,246,.35));}
-            :root{
-              --color-calendar-graph-day-bg:#161B22;
-              --color-calendar-graph-day-border:rgba(139,92,246,.10);
-              --color-calendar-graph-day-L1-bg:#312E81;
-              --color-calendar-graph-day-L2-bg:#6366F1;
-              --color-calendar-graph-day-L3-bg:#8B5CF6;
-              --color-calendar-graph-day-L4-bg:#22D3EE;
-              --color-calendar-graph-day-L4-border:rgba(34,211,238,.15);}
-            .calendar .day{outline-color:rgba(139,92,246,.12);}
-            @keyframes brandShift{0%,100%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(16deg)}}
+            [fill="#ebedf0"]{fill:#161B22;}
+            [fill="#9be9a8"]{fill:#312E81;}
+            [fill="#40c463"]{fill:#6366F1;}
+            [fill="#30a14e"]{fill:#8B5CF6;}
+            [fill="#216e39"]{fill:#22D3EE;}
           output_action: commit
           committer_message: "chore: refresh profile metrics"
