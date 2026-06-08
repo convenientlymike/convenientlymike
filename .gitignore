@@ -1,6 +1,7 @@
 # Operator-only docs — kept local, NOT part of the public profile repo
 SETUP.md
 PROFILE_SETTINGS.md
+CLAUDE.md
 
 # macOS / editor cruft
 .DS_Store

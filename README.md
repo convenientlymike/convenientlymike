@@ -6,6 +6,13 @@
 
 # Hi, I'm Michael &nbsp;·&nbsp; [`@convenientlymike`](https://github.com/convenientlymike)
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Kernel%20%E2%86%92%20Cloud-8B5CF6?style=for-the-badge&labelColor=09090F" alt="Kernel to Cloud" />
+  <img src="https://img.shields.io/badge/End--to--end%20ownership-6366F1?style=for-the-badge&labelColor=09090F" alt="End-to-end ownership" />
+  <img src="https://img.shields.io/badge/200%2B%20automations%20in%20prod-22D3EE?style=for-the-badge&labelColor=09090F" alt="200+ automations in production" />
+  <img src="https://img.shields.io/badge/Real--estate%20tech-A78BFA?style=for-the-badge&labelColor=09090F" alt="Real-estate tech" />
+</p>
+
 **I build and own entire backends end-to-end** — the AI automation, CRMs, and custom internal systems that run a **real estate investment firm**, plus the courses platform that trains the team. On top of that, I ship **full SaaS products**, front to back.
 
 Much of that product work lives in **real-estate tech** — an investment firm's operational backend, a property-tour SaaS, and a wholesaling platform — so I pair real domain fluency with the range to build whatever layer the problem needs.
@@ -19,7 +26,7 @@ Much of that product work lives in **real-estate tech** — an investment firm's
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&pause=1200&color=8B5CF6&width=560&lines=Backend+%26+systems+engineer;AI+automation+%C2%B7+SaaS+%C2%B7+low-level+systems;Kernel+to+cloud%2C+I+build+all+of+it)](https://github.com/convenientlymike)
 
----
+<img src="assets/divider.svg" width="100%" height="5" alt="" />
 
 ### 🚧 What I'm building right now
 
@@ -27,7 +34,7 @@ Much of that product work lives in **real-estate tech** — an investment firm's
 - **Virtual House Tours** — a full property-tour SaaS: native iOS capture, web viewer + dashboard, Tauri desktop, a Fastify API, and Stripe billing.
 - **Deep-systems engineering** — custom Android platform + GKI Linux kernel work, dynamic instrumentation, and a Vulkan↔Metal GPU translation path.
 
----
+<img src="assets/divider.svg" width="100%" height="5" alt="" />
 
 ### 📌 Selected work
 
@@ -42,7 +49,7 @@ Much of that product work lives in **real-estate tech** — an investment firm's
 | 🔬 **Low-level systems & RE** | From-scratch systems stack: custom GKI 5.15 Linux kernel, Android platform engineering, dynamic instrumentation, native reverse engineering, GPU translation. | `C` · `Kotlin` · `Frida` · `Vulkan` · `Metal` · `AOSP` |
 | 🧪 **Browser Harness** | Autonomous CDP-driven debugging + observability toolkit — drives a real browser, captures runtime/network failures, turns "looks fine" into "proven." | `Python` · `Node` · `Playwright` · `CDP` |
 
----
+<img src="assets/divider.svg" width="100%" height="5" alt="" />
 
 ### 🧰 Core stack
 
@@ -62,10 +69,10 @@ What I reach for daily — surfaced in-context above; here's the spine:
 ![Linux internals](https://img.shields.io/badge/Linux_internals-FCC624?style=flat-square&logo=linux&logoColor=black)
 ![Reverse engineering](https://img.shields.io/badge/Reverse_engineering-E83E8C?style=flat-square&logo=ghidra&logoColor=white)
 
-<p align="center"><sub>Most-used languages — measured from real code across my repos, <em>including private work</em>:</sub></p>
-<p align="center"><img src="assets/metrics.svg" alt="Most-used languages, measured from real code including private repositories" width="540" /></p>
+<p align="center"><sub>Languages measured from real code across my repos — <em>including private work</em> — with a live contribution calendar:</sub></p>
+<p align="center"><img src="assets/metrics.svg" alt="Most-used languages and contribution calendar, measured from real code including private repositories" width="540" /></p>
 
----
+<img src="assets/divider.svg" width="100%" height="5" alt="" />
 
 ### 🤝 Let's build something
 
@@ -75,4 +82,9 @@ I take the problems people call impossible — the cross-layer ones, the "no one
 
 💼 [LinkedIn](https://www.linkedin.com/in/michaelfbirney) &nbsp;·&nbsp; ✉️ [convenientlymike@gmail.com](mailto:convenientlymike@gmail.com)
 
-<div align="center"><sub><em>From the kernel to the cloud — I build all of it.</em></sub></div>
+<div align="center">
+<br/>
+<img src="assets/divider.svg" width="62%" height="5" alt="" />
+<br/><br/>
+<sub><em>From the kernel to the cloud — I build all of it.</em></sub>
+</div>

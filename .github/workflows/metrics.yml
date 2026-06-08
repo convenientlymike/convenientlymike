@@ -33,7 +33,7 @@ jobs:
           template: classic
           base: ""
           config_timezone: America/Denver        # MST / Mountain Time
-          config_order: languages
+          config_order: languages, isocalendar
           # Show contribution effort including private work:
           repositories_affiliations: owner, collaborator, organization_member
           plugin_languages: yes
@@ -41,6 +41,10 @@ jobs:
           plugin_languages_limit: 8
           plugin_languages_sections: most-used
           plugin_languages_colors: github
-          # Languages-only card — no zero-laden base/community sections on a new account.
+          # Isometric contribution calendar — a daily-changing "it's alive" signal.
+          # The metrics bot itself commits here twice a day, so the calendar always
+          # has fresh public activity even while most real work lives in private repos.
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
           output_action: commit
           committer_message: "chore: refresh profile metrics"
