@@ -106,22 +106,22 @@ jobs:
             [fill="#40c463"]{fill:#6366F1;}
             [fill="#30a14e"]{fill:#8B5CF6;}
             [fill="#216e39"]{fill:#22D3EE;}
-          output_action: none
+          # metrics persists its render only by committing it, so let it commit
+          # the SVG source; the next step pulls it, rasterizes a hi-res PNG, and
+          # replaces it. (output_action: none discards the file entirely.)
+          output_action: commit
+          committer_message: "chore: refresh profile metrics (svg source)"
 
-      - name: Rasterize SVG -> high-res transparent PNG (3x — crisp on every display)
+      - name: Rasterize the committed SVG -> hi-res transparent PNG (3x) and swap
         run: |
-          echo "=== assets/ after metrics ==="; ls -la assets/ 2>/dev/null || true
+          # sync the SVG metrics just committed into the workspace (works whether
+          # metrics committed via the API or locally)
+          git fetch -q origin main
+          git reset --hard -q origin/main
           SVG="$PWD/assets/metrics.svg"
           if [ ! -f "$SVG" ]; then
-            echo "not at assets/metrics.svg — searching workspace..."
-            SVG="$(find "$PWD" -name 'metrics*.svg' 2>/dev/null | head -1)"
+            echo "ERROR: no assets/metrics.svg after metrics commit"; ls -la assets/ || true; exit 1
           fi
-          if [ -z "$SVG" ] || [ ! -f "$SVG" ]; then
-            echo "ERROR: metrics produced no SVG in the workspace. All .svg files:"
-            find "$PWD" -name '*.svg' 2>/dev/null | head -20
-            exit 1
-          fi
-          echo "found SVG: $SVG"
           CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium)"
           echo "using: $CHROME"; "$CHROME" --version
           W=$(grep -oE '<svg[^>]*>' "$SVG" | head -1 | grep -oE 'width="[0-9]+"' | head -1 | grep -oE '[0-9]+')
@@ -134,16 +134,10 @@ jobs:
           # assert the PNG is RGBA (color type 6) so transparency wasn't lost
           python3 -c "import struct,sys; d=open('assets/metrics.png','rb').read(26); w,h=struct.unpack('>II',d[16:24]); assert d[25]==6, f'PNG color type {d[25]} != 6 (RGBA); transparency lost'; print(f'png {w}x{h} RGBA ok')"
           ls -la assets/metrics.png
-
-      - name: Commit & push
-        run: |
-          rm -f assets/metrics.svg
+          # swap: drop the SVG source, keep only the hi-res PNG (README embeds the PNG)
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q assets/metrics.svg
           git add assets/metrics.png
-          if git diff --cached --quiet; then
-            echo "no metrics change"
-          else
-            git commit -m "chore: refresh profile metrics"
-            git push
-          fi
+          git commit -m "chore: render hi-res metrics png"
+          git push
