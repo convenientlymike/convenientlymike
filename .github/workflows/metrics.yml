@@ -110,15 +110,27 @@ jobs:
 
       - name: Rasterize SVG -> high-res transparent PNG (3x — crisp on every display)
         run: |
+          echo "=== assets/ after metrics ==="; ls -la assets/ 2>/dev/null || true
+          SVG="$PWD/assets/metrics.svg"
+          if [ ! -f "$SVG" ]; then
+            echo "not at assets/metrics.svg — searching workspace..."
+            SVG="$(find "$PWD" -name 'metrics*.svg' 2>/dev/null | head -1)"
+          fi
+          if [ -z "$SVG" ] || [ ! -f "$SVG" ]; then
+            echo "ERROR: metrics produced no SVG in the workspace. All .svg files:"
+            find "$PWD" -name '*.svg' 2>/dev/null | head -20
+            exit 1
+          fi
+          echo "found SVG: $SVG"
           CHROME="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium)"
           echo "using: $CHROME"; "$CHROME" --version
-          W=$(grep -oE '<svg[^>]*>' assets/metrics.svg | head -1 | grep -oE 'width="[0-9]+"' | head -1 | grep -oE '[0-9]+')
-          H=$(grep -oE '<svg[^>]*>' assets/metrics.svg | head -1 | grep -oE 'height="[0-9]+"' | head -1 | grep -oE '[0-9]+')
+          W=$(grep -oE '<svg[^>]*>' "$SVG" | head -1 | grep -oE 'width="[0-9]+"' | head -1 | grep -oE '[0-9]+')
+          H=$(grep -oE '<svg[^>]*>' "$SVG" | head -1 | grep -oE 'height="[0-9]+"' | head -1 | grep -oE '[0-9]+')
           echo "svg ${W}x${H} -> png at 3x"
           "$CHROME" --headless=new --disable-gpu --no-sandbox --hide-scrollbars \
             --default-background-color=00000000 --force-device-scale-factor=3 \
-            --window-size=${W},${H} --screenshot=assets/metrics.png \
-            "file://$PWD/assets/metrics.svg"
+            --window-size=${W},${H} --screenshot="$PWD/assets/metrics.png" \
+            "file://$SVG"
           # assert the PNG is RGBA (color type 6) so transparency wasn't lost
           python3 -c "import struct,sys; d=open('assets/metrics.png','rb').read(26); w,h=struct.unpack('>II',d[16:24]); assert d[25]==6, f'PNG color type {d[25]} != 6 (RGBA); transparency lost'; print(f'png {w}x{h} RGBA ok')"
           ls -la assets/metrics.png
@@ -128,7 +140,7 @@ jobs:
           rm -f assets/metrics.svg
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A assets/
+          git add assets/metrics.png
           if git diff --cached --quiet; then
             echo "no metrics change"
           else
