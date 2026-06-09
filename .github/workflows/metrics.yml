@@ -12,7 +12,8 @@
 #   3. Repo → Settings → Actions → General → Workflow permissions →
 #      "Read and write permissions".
 #   4. Run it once: Actions tab → "Profile metrics" → Run workflow.
-#   5. Embed the result in README.md:  <img src="assets/metrics.svg" alt="metrics" />
+#   5. Embed the result in README.md:  <img src="assets/metrics.png" width="100%" alt="metrics" />
+#      PNG (not SVG) so it renders identically on iOS Safari / in-app webviews.
 name: Profile metrics
 on:
   workflow_dispatch:
