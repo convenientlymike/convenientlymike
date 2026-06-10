@@ -67,7 +67,12 @@ jobs:
           # Lifetime repo-byte mode (NOT indepth): shows EVERY language across all
           # repos with real file sizes — the full polyglot breadth (Rust/Swift/Go/C/
           # Kotlin included). indepth only saw ~5 recent (Python/TS) languages, so it
-          # can't represent the systems work. Trade-off: TypeScript leads by byte volume.
+          # can't represent the systems work.
+          # IGNORE TypeScript (+ TSX): by raw byte volume it drowned out the card at
+          # ~65%, hiding the systems work (Rust/Swift/Go/C/Kotlin/Python). Excluding it
+          # rebalances the breakdown toward the depth-signal languages. (Add javascript
+          # to the list too if JS later dominates.)
+          plugin_languages_ignored: typescript, tsx
           plugin_languages_sections: most-used
           plugin_languages_details: percentage, bytes-size
           plugin_languages_categories: programming, markup
