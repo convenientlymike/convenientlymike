@@ -45,7 +45,8 @@ Much of that product work lives in **real-estate tech** — an investment firm's
 | ⭐ **Real-estate firm backend** *(flagship · private)* | The complete software backbone of an investment firm — AI automation, CRM, custom internal platforms, courses. **200+ production automations replacing several full-time roles.** | `Python` · `FastAPI` · `TypeScript` · `LLM orchestration` · `Postgres` |
 | 🏠 **Virtual House Tours** *(in development)* | Full property-tour SaaS — iOS app, web + dashboard, Tauri desktop, signed-URL delivery, Stripe billing, background workers. | `TypeScript` · `iOS` · `Fastify` · `Postgres` · `Redis` · `S3` |
 | 🏘️ **Real-estate wholesaling platform** *(private)* | A wholesaling software stack — Next.js web, a Go service for seller outreach/telephony, a FastAPI AI lead layer, Temporal deal workflows, ClickHouse analytics, Kafka streaming. | `Next.js` · `Go` · `FastAPI` · `Temporal` · `ClickHouse` · `Kafka` |
-| 🎛️ **`dma-manager` — hardware control plane** | Premium real-time control plane for hardware controllers — 30 Hz telemetry, a clean hardware-abstraction layer (sim → probe → PCIe → serial → remote), hardened API. | `TypeScript` · `React` · `FastAPI` · `real-time HAL` |
+| 🎛️ **`dma-manager` — hardware control plane** | Premium real-time control plane for hardware controllers — 30 Hz telemetry, a clean hardware-abstraction layer (sim → probe → PCIe → serial → remote), hardened API, and a **brick-safe firmware lifecycle** (detect → back up → flash → verify) driven by a guided onboarding wizard. | `TypeScript` · `React` · `FastAPI` · `real-time HAL` |
+| 🧱🛡️ **[`bricksafe`](https://github.com/convenientlymike/bricksafe)** *(open source)* | Never brick a device — the safe-by-construction firmware-write core, extracted + made domain-neutral: one write-gate (backup-before-write hard gate, byte-level placeholder guard, read-before-write CAS, confirm-readback, undo + audit). Zero runtime deps, `mypy --strict`. | `Python` · `embedded` · `safety` |
 | 🔬 **Low-level systems & RE** | From-scratch systems stack: custom GKI 5.15 Linux kernel, Android platform engineering, dynamic instrumentation, native reverse engineering, GPU translation. | `C` · `Kotlin` · `Instrumentation` · `Vulkan` · `Metal` · `AOSP` |
 | ✅ **[Forcing-function engineering](https://github.com/convenientlymike/case-studies/blob/main/07-forcing-function-completeness.md)** *(methodology)* | Making "done" machine-checkable — every quality doctrine encoded as a lint gate or test that fails the moment it's broken (route↔UI coverage, one-audited-write-path, risk-badging, docs-can't-drift), plus a multi-agent completeness audit that drove a 40+ finding sweep to zero. | `Quality gates` · `CI` · `Python` · `TypeScript` |
 | 🧪 **Browser Harness** | Autonomous CDP-driven debugging + observability toolkit — drives a real browser, captures runtime/network failures, turns "looks fine" into "proven." | `Python` · `Node` · `Playwright` · `CDP` |
@@ -75,6 +76,9 @@ What I reach for daily — surfaced in-context above; here's the spine:
 
 <p align="center"><sub>Languages measured from real code across my repos — <em>including private work</em> — with a live contribution calendar:</sub></p>
 <p align="center"><img src="assets/metrics.png" alt="Most-used languages and contribution calendar, measured from real code including private repositories" width="100%" /></p>
+
+<p align="center"><sub>And the volume behind it — total Claude Code tokens, with a 3D calendar of daily usage (aggregate counts from local sessions):</sub></p>
+<p align="center"><img src="assets/claude-usage.png" alt="Claude Code token usage — 71B+ tokens, with a 3D isometric calendar of daily usage" width="100%" /></p>
 
 <img src="assets/divider.svg" width="100%" height="5" alt="" />
 
