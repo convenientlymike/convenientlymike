@@ -56,6 +56,7 @@ Much of that product work lives in **real-estate tech** — an investment firm's
 | 🛰️ **[Fleet](https://github.com/convenientlymike/fleet)** | Parallel-agent compatibility for Claude Code — open many windows on one project; an edit to a file a *live* agent has claimed is hard-blocked at the hook (exit 2). Just files + 4 hooks, no daemon. | `Bash` · `Claude Code hooks` · `CLI` |
 | 🩺 **[svgsafe](https://github.com/convenientlymike/svgsafe)** | Make SVGs render everywhere — diagnose the iOS/WebKit `<foreignObject>` clipping traps, auto-fix them, or rasterize to a crisp transparent PNG. Zero runtime deps; in-browser playground. | `TypeScript` · `Node` · `CLI` |
 | 🖼 **[shotcraft](https://github.com/convenientlymike/shotcraft)** | Turn real terminal output or a before/after into a beautiful, brand-matched PNG for your README — a themeable Carbon + diff framer rendered by your installed Chrome (over CDP). Zero runtime deps; in-browser playground. | `TypeScript` · `Node` · `CLI` |
+| 🧊 **[claude-usage-graph](https://github.com/convenientlymike/claude-usage-graph)** | Turn your Claude Code token usage into a 3D isometric calendar — a contribution-graph-style card built from local session transcripts (aggregate counts only). Four themes, optional PNG. Zero required deps; in-browser playground. | `TypeScript` · `Node` · `CLI` |
 
 <img src="assets/divider.svg" width="100%" height="5" alt="" />
 
